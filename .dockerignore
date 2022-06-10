@@ -4,3 +4,4 @@ Dockerfile
 .gitignore
 .git
 .vscode
+docker-compose*

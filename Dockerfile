@@ -1,7 +1,15 @@
 FROM node:15
 WORKDIR /app
 COPY  package.json .
-RUN npm install 
+#RUN npm install 
+# we can go for a conditional npm installation
+ARG NODE_ENV
+# you need to pass the args in the docker-compose file to use it here in the docker file so be awar of it 
+RUN if [ "$NODE_ENV" = "development" ];\
+     then npm install;\
+     else npm install --only-production;\
+     fi
+
 #copy all the files to the /app and because we have used the WORKDIR so we can write . or ./ for the destination 
 COPY . ./
 ENV PORT 3000
