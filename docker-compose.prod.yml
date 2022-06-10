@@ -1,0 +1,16 @@
+################################################################
+# dev 
+################################################################
+version: '3'
+services:
+  node-app:
+    build: 
+        context: .  # its a location of docker file 
+        args:
+          NODE_ENV: production
+    volumes:
+      - ./:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=production
+    command: node index.js

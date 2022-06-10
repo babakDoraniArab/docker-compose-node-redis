@@ -1,20 +1,19 @@
-version: '3'
+#this is for shared configuraiton in both dev and prod environment
+version: "3"
 services:
   node-app:
-    build: .
     ports:
-      - "3000:5000"
-    volumes:
-      - ./:/app
-      - /app/node_modules
+      - "3000:3100"
     environment:
-      - PORT=5000
-    # env_file: this is exactly like top 
-    #   -./.envfile     
+      - PORT=3100
+################################################################
+# you commands would be
+################################################################
 
+#------------------------------- for the dev mode --------------------
+# docker-compose -f docker-compose.yml -f docker-compose.dev.yml up --build
+#docker-compose -f docker-compose.yml -f docker-compose.dev.yml down -v
 
-
-    # docker-compose up -d
-    # docker-compose up -d --build ( it force a brand new build)
-
-    # docker-compose down -v 
+#------------------------------- for the prod mode --------------------
+# docker-compose -f docker-compose.yml -f docker-compose.prod.yml up --build
+#docker-compose -f docker-compose.yml -f docker-compose.prod.yml down -v
